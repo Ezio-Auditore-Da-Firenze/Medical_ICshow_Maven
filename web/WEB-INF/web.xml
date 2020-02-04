@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>Medical_ICshow</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <description></description>
+        <display-name>InfoSelectServlet</display-name>
+        <servlet-name>InfoSelectServlet</servlet-name>
+        <servlet-class>servlet.InfoSelectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InfoSelectServlet</servlet-name>
+        <url-pattern>/InfoSelectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>DoctorInsertServlet</display-name>
+        <servlet-name>DoctorInsertServlet</servlet-name>
+        <servlet-class>servlet.DoctorInsertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DoctorInsertServlet</servlet-name>
+        <url-pattern>/DoctorInsertServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>DeleteServlet</display-name>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>servlet.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>DoctorUpdateServlet</display-name>
+        <servlet-name>DoctorUpdateServlet</servlet-name>
+        <servlet-class>servlet.DoctorUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DoctorUpdateServlet</servlet-name>
+        <url-pattern>/DoctorUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>PatientInsertServlet</display-name>
+        <servlet-name>PatientInsertServlet</servlet-name>
+        <servlet-class>servlet.PatientInsertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PatientInsertServlet</servlet-name>
+        <url-pattern>/PatientInsertServlet</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

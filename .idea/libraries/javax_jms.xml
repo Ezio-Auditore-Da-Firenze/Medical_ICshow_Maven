@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="javax.jms">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javax.jms.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
