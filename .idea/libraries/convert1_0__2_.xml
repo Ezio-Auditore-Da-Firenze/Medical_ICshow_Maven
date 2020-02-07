@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="convert1.0 (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/convert1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/convert1.0.jar!/doc" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

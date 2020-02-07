@@ -33,13 +33,13 @@
         <dependency>
             <groupId>org.web3j</groupId>
             <artifactId>core</artifactId>
-            <version>4.5.12</version>
+            <version>4.5.13</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.web3j/geth -->
         <dependency>
             <groupId>org.web3j</groupId>
             <artifactId>geth</artifactId>
-            <version>4.5.12</version>
+            <version>4.5.13</version>
         </dependency>
 
     </dependencies>
