@@ -235,6 +235,7 @@
     }
 
     function tpformsubmit() {
+        //alert("ajdklajdk");
         var dosname = $('#dosname').val();
         url = 'InfoSelectServlet?userId=' + dosname + '&signal=select';
         window.location.href = url;

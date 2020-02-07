@@ -225,5 +225,34 @@ public class Dao implements DaoInterface {
         return ifsuc;
     }
 
+    @Override
+    public String selectIntelligentcontract(){
+        String sql = "select * from intelligentcontract";
+        ResultSet cha = j.cx(sql);
+        String addr=null;
+        try {
+            while (j.rs.next()) {
+                addr=j.rs.getString("addr");
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return addr;
+    }
+
+    @Override
+    public boolean addIntelligentcontract(String addr) {
+        boolean ifsuc = false;
+
+        String sql2 = "insert into intelligentcontract(addr) value(?)";
+        Object[] obj = {addr};
+        int zsg = j.zsg(sql2, obj);
+        if (zsg > 0) {
+            ifsuc = true;
+        }
+        return ifsuc;
+    }
+
 
 }
