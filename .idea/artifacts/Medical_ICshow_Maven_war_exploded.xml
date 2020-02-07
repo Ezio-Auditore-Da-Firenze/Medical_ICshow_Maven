@@ -53,8 +53,10 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.5" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.web3j:geth:4.5.13" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="Medical_ICshow_Maven/web/Web" />
     </root>
   </artifact>
 </component>

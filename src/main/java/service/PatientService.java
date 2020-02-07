@@ -23,14 +23,15 @@ public class PatientService {
         dao=new Dao();
     }
     public List<Patient>selectVisitingRecord(String userid) throws Exception {
-        if(dao.selectIntelligentcontract() == null){
-            System.out.println("newIC!!!!!!");
+        if(dao.selectIntelligentcontract() == null||dao.selectIntelligentcontract().equals("")){
+            System.out.println("No Intelligent Contract,Deploy Now");
             String addr=IC_Administration.ICA.IC_deploy();
             dao.addIntelligentcontract(addr);
         }else{
-            System.out.println(dao.selectIntelligentcontract());
+            System.out.println("We Got Intelligent Contract At:"+dao.selectIntelligentcontract());
+            //IC_Administration.ICA.mine();
         }
-        System.out.println("223333");
+        //System.out.println("223333");
         List<Patient> selall = dao.chadocbing(userid);
         return selall;
     }
