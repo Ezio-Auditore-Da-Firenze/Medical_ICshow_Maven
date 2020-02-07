@@ -38,5 +38,6 @@ public interface DaoInterface {
     boolean updatedoccount(String dname, int count);
     //获取合约地址
     String selectIntelligentcontract();
+    List<Patient> selectByPno(String pno);
     boolean addIntelligentcontract(String addr);
 }

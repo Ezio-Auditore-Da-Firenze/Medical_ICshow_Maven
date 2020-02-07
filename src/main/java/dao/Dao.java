@@ -185,7 +185,6 @@ public class Dao implements DaoInterface {
     @Override
     public boolean addPatient(Patient doc) {
         boolean ifsuc = false;
-
         String sql2 = "insert into patientinfo(pno,pname,identity,age,psex,psexdes,dname,department,departdes,totalcost,treatdate,arrivedate,notes) value(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Object[] obj = {doc.getPno(), doc.getPname(), doc.getIdentity(), doc.getAge(), doc.getPsex(), doc.getPsexdes(), doc.getDname(), doc.getDepartment(), doc.getDepartdes(), doc.getTotalcost(), doc.getTreatdate(), doc.getArrivedate(), doc.getNotes()};
         int zsg = j.zsg(sql2, obj);
@@ -239,6 +238,39 @@ public class Dao implements DaoInterface {
             e.printStackTrace();
         }
         return addr;
+    }
+
+    @Override
+    public List<Patient> selectByPno(String pno) {
+        // TODO Auto-generated method stub
+        String sql = "select pno,pname,identity,psex,psexdes,age,dname,department,departdes,totalcost,treatdate,arrivedate,notes from patientinfo where pno= ?";
+        Object[] obj = {pno};
+        ResultSet cha = j.cx(sql, obj);
+        Patient self = null;
+        List<Patient> list = new ArrayList<Patient>();
+        try {
+            while (cha.next()) {
+                self = new Patient();
+                self.setPno(cha.getString("pno"));
+                self.setPname(cha.getString("pname"));
+                self.setIdentity(cha.getString("identity"));
+                self.setPsex(cha.getInt("psex"));
+                self.setPsexdes(cha.getString("psexdes"));
+                self.setAge(cha.getInt("age"));
+                self.setDname(cha.getString("dname"));
+                self.setDepartment(cha.getString("department"));
+                self.setDepartdes(cha.getString("departdes"));
+                self.setTotalcost(cha.getDouble("totalcost"));
+                self.setTreatdate(cha.getDate("treatdate"));
+                self.setArrivedate(cha.getDate("arrivedate"));
+                self.setNotes(cha.getString("notes"));
+                list.add(self);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override

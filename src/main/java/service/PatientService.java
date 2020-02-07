@@ -1,5 +1,6 @@
 package service;
 
+import bean.Doctor;
 import bean.Patient;
 import dao.Dao;
 import dao.DaoInterface;
@@ -19,20 +20,44 @@ import static ic_ethereum.Idus.deploy;
 
 public class PatientService {
     Dao dao;
-    public PatientService(){
+    String addr;
+    public PatientService() {
         dao=new Dao();
-    }
-    public List<Patient>selectVisitingRecord(String userid) throws Exception {
         if(dao.selectIntelligentcontract() == null||dao.selectIntelligentcontract().equals("")){
             System.out.println("No Intelligent Contract,Deploy Now");
-            String addr=IC_Administration.ICA.IC_deploy();
+            String addr= null;
+            try {
+                addr = IC_Administration.ICA.IC_deploy();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             dao.addIntelligentcontract(addr);
         }else{
-            System.out.println("We Got Intelligent Contract At:"+dao.selectIntelligentcontract());
-            //IC_Administration.ICA.mine();
+            addr=dao.selectIntelligentcontract();
+            System.out.println("We Got Intelligent Contract At:"+addr);
         }
-        //System.out.println("223333");
-        List<Patient> selall = dao.chadocbing(userid);
-        return selall;
+    }
+    public List<Patient> selectVisitingRecord(String pno){
+        //List<Patient> patients = dao.chadocbing(userid);
+        List<Patient> patients;
+        if(pno.equals("")){
+            patients= dao.chadocbing(pno);
+        }else{
+            patients = dao.selectByPno(pno);
+            Patient pa=IC_Administration.ICA.selectPatient(pno,addr);
+            patients.add(pa);
+        }
+        return patients;
+    }
+    public boolean insertPatient(Patient pa){
+        boolean pas = dao.addPatient(pa);
+        IC_Administration.ICA.addPatient(pa,addr);
+        if (pas = true) {
+            Doctor chadoc = dao.selectDoctorNumber(pa.dname);
+            int co = chadoc.getCount();
+            co += 1;
+            dao.updatedoccount(pa.dname, co);
+        }
+        return pas;
     }
 }
