@@ -15,7 +15,7 @@
     <style type="text/css">
         #table1 {
             margin-top: 15px;
-            width: 770px;
+            width: 100%;
             border-collapse: collapse;
         }
 
@@ -33,7 +33,7 @@
 </head>
 <body>
 <button onclick="select();" style="display: none;">查询</button>
-<form action="" method="post">
+<form action="" method="post" style="width: 100%;float: right;">
     <a href="addsick.jsp" target="mainFrame" title="新增" style="text-decoration: none;border: 1px solid gray;">新增</a>
     <input type="button" value="删除" onclick="tpformdelete();"/>
     病历编号：<input type="text" id="dosname"/>

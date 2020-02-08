@@ -8,14 +8,12 @@ import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.admin.Admin;
 import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 import org.web3j.protocol.geth.Geth;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tx.Contract;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -36,7 +34,8 @@ public class IC_Administration {
         try {
             credentials= WalletUtils.loadCredentials(        // 加载钱包
                     "1234",
-                    "F:\\GoWorkSpace\\ether-test\\db\\keystore\\UTC--2020-01-10T13-00-45.976152300Z--1b17a608ca853903c8fada1bacb236bb4ac2e93f"
+                    IC_Administration.class.getResource("key_01").getPath()
+                    //"F:\\GoWorkSpace\\ether-test\\db\\keystore\\UTC--2020-01-10T13-00-45.976152300Z--1b17a608ca853903c8fada1bacb236bb4ac2e93f"
             );
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,6 +68,7 @@ public class IC_Administration {
     public Patient selectPatient(String pno,String addr) {
         Patient pa=new Patient();
         try {
+            System.out.println(IC_Administration.class.getResource("key_01").getPath());
             Idus idus= load(addr,web3j,credentials,BigInteger.valueOf(22000000000L), BigInteger.valueOf(4300000L));
             System.out.println("selectPatient_isValid"+idus.isValid());
             mine();
@@ -96,13 +96,13 @@ public class IC_Administration {
                     //Admin admin=Admin.build(new HttpService());
                     geth.minerStart(1).send();
                     int newblock=oldblock;
-                    while(newblock<oldblock+3){
-                        Thread.sleep(Long.parseLong("20"));
+                    while(newblock<oldblock+4){
+                        //Thread.sleep(Long.parseLong("20"));
                         newblock=Integer.parseInt(geth.ethBlockNumber().send().getBlockNumber().toString());
                     }
                     geth.minerStop().send();
                     System.out.println("TopBlockNumber_NEW="+newblock+"\nMineStop");
-                } catch (IOException | InterruptedException e) {
+                } catch (IOException  e) {
                     e.printStackTrace();
                 }
             }
