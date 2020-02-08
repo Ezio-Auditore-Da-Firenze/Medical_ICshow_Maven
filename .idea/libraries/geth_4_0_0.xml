@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="jstl (2)">
+  <library name="geth-4.0.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/geth-4.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -12,6 +12,7 @@ import org.web3j.protocol.admin.Admin;
 import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
+
 import org.web3j.protocol.geth.Geth;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Contract;
@@ -46,10 +47,11 @@ public class IC_Administration {
     public String IC_deploy() throws Exception {
 
         // 部署合约
-        geth.minerStart(1).send();
+        mine();
+        //geth.minerStart(1).send();
         Idus idus= Idus.deploy(web3j, credentials, BigInteger.valueOf(22000000000L), BigInteger.valueOf(4300000L)).send();
         // 部署完成后返回合约地址
-        geth.minerStop().send();
+        //geth.minerStop().send();
         return idus.getContractAddress();
     }
     public void addPatient(Patient pa,String addr) {
@@ -69,7 +71,7 @@ public class IC_Administration {
         try {
             Idus idus= load(addr,web3j,credentials,BigInteger.valueOf(22000000000L), BigInteger.valueOf(4300000L));
             System.out.println("selectPatient_isValid"+idus.isValid());
-            //mine();
+            mine();
             List<Type> result = idus.getPatient(pno).send();
             System.out.println(result);
             pa.setPno(result.get(0).toString());
@@ -77,7 +79,7 @@ public class IC_Administration {
             pa.setIdentity(result.get(2).toString());
             pa.setPsexdes(result.get(3).toString());
             pa.setTotalcost(Double.parseDouble(result.get(4).toString()));
-            pa.setNotes("区块链记载数据");
+            pa.setNotes("Read Form BlockChain");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,6 +93,7 @@ public class IC_Administration {
                     Request<?, EthBlockNumber> request=geth.ethBlockNumber();
                     int oldblock=Integer.parseInt(request.send().getBlockNumber().toString());
                     System.out.println("MineStart\nTopBlockNumber_OLD="+oldblock);
+                    //Admin admin=Admin.build(new HttpService());
                     geth.minerStart(1).send();
                     int newblock=oldblock;
                     while(newblock<oldblock+3){
