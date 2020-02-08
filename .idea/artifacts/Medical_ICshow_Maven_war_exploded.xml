@@ -2,12 +2,41 @@
   <artifact type="exploded-war" name="Medical_ICshow_Maven:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/Medical_ICshow_Maven_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="Medical_ICshow_Maven/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Medical_ICshow_Maven" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="gson-2.0" />
+          <element id="library" level="project" name="javax.servlet.jsp.jstl" />
+          <element id="library" level="project" name="javax.transaction" />
+          <element id="library" level="project" name="javax.resource" />
+          <element id="library" level="project" name="javax.persistence" />
+          <element id="library" level="project" name="javax.jms" />
+          <element id="library" level="project" name="javax.annotation" />
+          <element id="library" level="project" name="jstl" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.12" />
+          <element id="library" level="project" name="convert1.0" />
+          <element id="library" level="project" name="dwr" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm:5.0.3" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-commons:5.0.3" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-analysis:5.0.3" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-tree:5.0.3" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-util:5.0.3" />
+          <element id="library" level="project" name="Maven: com.github.jnr:jnr-x86asm:1.0.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.5" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.5" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="standard-1.1.2 (2)" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.12 (2)" />
+          <element id="library" level="project" name="gson-2.0 (2)" />
+          <element id="library" level="project" name="dwr (2)" />
+          <element id="library" level="project" name="convert1.0 (2)" />
+          <element id="library" level="project" name="javax.transaction (2)" />
+        </element>
       </element>
+      <element id="javaee-facet-resources" facet="Medical_ICshow_Maven/web/Web" />
     </root>
   </artifact>
 </component>

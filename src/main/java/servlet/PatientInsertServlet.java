@@ -4,6 +4,7 @@ import bean.Doctor;
 import bean.Patient;
 import dao.Dao;
 import dao.DaoInterface;
+import service.PatientService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -68,37 +69,21 @@ public class PatientInsertServlet extends HttpServlet {
         pa.setDepartdes(departdes);
         pa.setTotalcost(Double.parseDouble(totalcost));
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-
         try {
             Date date0 = df.parse(treatdate);
             pa.setTreatdate(date0);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-
-        try {
             Date date1 = df.parse(arrivedate);
             pa.setArrivedate(date1);
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         pa.setNotes(notes);
-        DaoInterface Iperpan = new Dao();
-        boolean pas = Iperpan.addPatient(pa);
-        if (pas = true) {
-            Doctor chadoc = Iperpan.selectDoctorNumber(dname);
-            int co = chadoc.getCount();
-            co += 1;
-            Iperpan.updatedoccount(dname, co);
-        }
+        PatientService ps=new PatientService();
+        boolean pas =ps.insertPatient(pa);
         out.print(pas);
         out.flush();
         out.close();
-
     }
 
 }

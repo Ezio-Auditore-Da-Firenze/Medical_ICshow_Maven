@@ -3,6 +3,7 @@ package dao;
 import bean.Doctor;
 import bean.Patient;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface DaoInterface {
@@ -35,5 +36,8 @@ public interface DaoInterface {
 
     //更新医生病人数
     boolean updatedoccount(String dname, int count);
-
+    //获取合约地址
+    String selectIntelligentcontract();
+    List<Patient> selectByPno(String pno);
+    boolean addIntelligentcontract(String addr);
 }

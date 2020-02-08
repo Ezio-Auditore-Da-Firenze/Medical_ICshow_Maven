@@ -1,36 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312;"/>
+    <script type='text/javascript' src='./js/jquery-1.11.0.min.js'></script>
     <title>菜单选择</title>
     <style type="">
+        body{
+            background: url("/image/bg.jpg") no-repeat;
+        }
+        #container{
+            position: absolute;
+            width:1900px;
+            height:960px;
+            margin-top: 20px;
+            /*display:flex;         !*flex布局*!*/
+        }
         #left {
             border: 1px solid black;
-            width: 300px;
-            height: 900px;
+            margin-left: 150px;
+            width: 200px;
+            height: 100%;
             float: left;
+            /*flex:none;*/
         }
-
         #main {
-            width: 1800px;
-            height: 900px;
+            width: 68%;
+            height: 100%;
             border: 1px solid black;
+            margin-left: 350px;
+            /*flex:1;*/
         }
     </style>
 </head>
 
-<body>
-
-<div id="left">
-    <ul>
-        <li class="page_item page-item-2 "><a href="doc.jsp" target="mainFrame" title="医生信息管理">医生信息管理</a></li>
-        <li class="page_item page-item-5"><a href="sick.jsp" target="mainFrame" title="就诊管理系统">就诊管理系统</a></li>
-    </ul>
-</div>
-<div id="main">
-    <iframe name="mainFrame" scrolling="no" frameborder="0" style="width:1400px;height: 850px;"></iframe>
-</div>
+<body >
+    <div id="container">
+        <div id="left">
+            <ul>
+                <li class="page_item page-item-2 "><a href="doc.jsp" target="mainFrame" title="医生信息管理">医生信息管理</a></li>
+                <li class="page_item page-item-5"><a href="sick.jsp" target="mainFrame" title="就诊管理系统">就诊管理系统</a></li>
+            </ul>
+        </div>
+        <div id="main">
+            <iframe name="mainFrame"  frameborder="0" style="width:99%;height:100%;"></iframe>
+        </div>
+    </div>
+    <div id="particles" style="z-index: -2; height: 1000px;"></div>
+    <script type='text/javascript' src='./js/jquery.particleground.js'></script>
+    <script type='text/javascript' src='./js/demo.js'></script>
 </body>
 </html>

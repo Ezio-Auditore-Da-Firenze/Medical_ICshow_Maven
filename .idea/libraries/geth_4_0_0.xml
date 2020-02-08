@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="javax.servlet">
+  <library name="geth-4.0.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/geth-4.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

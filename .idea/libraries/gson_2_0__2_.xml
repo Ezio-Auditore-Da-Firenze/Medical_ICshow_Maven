@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="javax.servlet.jsp">
+  <library name="gson-2.0 (2)">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/gson-2.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

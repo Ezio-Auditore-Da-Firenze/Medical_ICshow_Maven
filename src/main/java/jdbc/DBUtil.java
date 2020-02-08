@@ -21,11 +21,11 @@ public class DBUtil {
     private String username = "root";
     private String password = "root";
     //Connection�ӿڣ���ָ�����ݿ������?
-    private Connection conn;
+    public Connection conn;
     //�����ݿ⴫��sql���?
-    private PreparedStatement pst;
+    public PreparedStatement pst;
     //�����?
-    private ResultSet rs;
+    public ResultSet rs;
 
     /**
      * ��������
@@ -59,7 +59,17 @@ public class DBUtil {
         }
         return rs;
     }
-
+    public ResultSet cx(String sql) {
+        getConnection();
+        try {
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return rs;
+        }
+        return rs;
+    }
     /**
      * ����ɾ����
      *

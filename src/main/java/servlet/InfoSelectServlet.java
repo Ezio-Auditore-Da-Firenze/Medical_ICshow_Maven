@@ -5,6 +5,7 @@ import bean.Patient;
 import com.google.gson.Gson;
 import dao.Dao;
 import dao.DaoInterface;
+import service.PatientService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -72,10 +73,15 @@ public class InfoSelectServlet extends HttpServlet {
             out.flush();
             out.close();
         } else if (signal.equals("selectpan")) {
-            List<Patient> selall = Iperpan.chadocbing(userid);
-            request.getSession().setAttribute("listG", selall);
+            PatientService ps=new PatientService();
+            try {
+                request.getSession().setAttribute("listG", ps.selectVisitingRecord(userid));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             request.getRequestDispatcher("sick.jsp").forward(request, response);
         } else if (signal.equals("select")) {
+            //System.out.println("5555");
             List<Doctor> selall = Iperpan.selall(userid);
             request.getSession().setAttribute("listC", selall);
             response.sendRedirect("doc.jsp");
