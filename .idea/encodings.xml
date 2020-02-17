@@ -12,9 +12,17 @@
     <file url="file://$PROJECT_DIR$/src/main/java/servlet/DoctorUpdateServlet.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/servlet/InfoSelectServlet.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/servlet/PatientInsertServlet.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-beanutils-1.8.0.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-collections-3.2.1.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-fileupload-1.3.1.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-io-2.4.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-lang-2.6.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-logging-1.1.1.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/convert1.0.jar" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/dwr.jar" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/ezmorph-1.0.6.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/gson-2.0.jar" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/json-lib-2.4-jdk15.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/jstl.jar" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-8.0.12.jar" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/standard-1.1.2.jar" charset="GBK" />

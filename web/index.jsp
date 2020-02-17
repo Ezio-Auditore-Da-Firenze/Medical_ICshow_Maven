@@ -14,8 +14,8 @@
         }
         #container{
             position: absolute;
-            width:1900px;
-            height:960px;
+            width:1860px;
+            height:930px;
             margin-top: 20px;
             /*display:flex;         !*flex布局*!*/
         }

@@ -34,6 +34,7 @@
           <element id="library" level="project" name="dwr (2)" />
           <element id="library" level="project" name="convert1.0 (2)" />
           <element id="library" level="project" name="javax.transaction (2)" />
+          <element id="library" level="project" name="Maven: org.json:json:20160212" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Medical_ICshow_Maven/web/Web" />
