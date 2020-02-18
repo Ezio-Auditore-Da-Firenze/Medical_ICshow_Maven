@@ -51,39 +51,32 @@ public class IC_Administration {
         }
     }
     public String IC_deploy() throws Exception {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put(KeyValue.MINENUM,"4");
-            getMine(jsonObject);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         // 部署合约
-        //mine();
-        //geth.minerStart(1).send();
+        mine(3,10);
         Idus idus= Idus.deploy(web3j, credentials, BigInteger.valueOf(22000000000L), BigInteger.valueOf(4300000L)).send();
         // 部署完成后返回合约地址
-        //geth.minerStop().send();
         return idus.getContractAddress();
     }
     public void addPatient(Patient pa,String addr) {
-        try {
-            Idus idus=Idus.load(addr,web3j,credentials,BigInteger.valueOf(22000000000L), BigInteger.valueOf(4300000L));
-            System.out.println("addPatient_isValid"+idus.isValid());
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put(KeyValue.MINENUM,"4");
-                getMine(jsonObject);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            //mine();
-            TransactionReceipt x=idus.addPatientToStore(pa.pno,pa.pname,pa.identity,pa.psexdes,pa.totalcost+"").send();
-            System.out.println(x);
-            //mine();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Idus idus=Idus.load(addr,web3j,credentials,BigInteger.valueOf(22000000000L), BigInteger.valueOf(4300000L));
+                    //System.out.println("addPatient_isValid"+idus.isValid());
+                    mine(1,10);
+                    TransactionReceipt x= null;
+                    try {
+                        x = idus.addPatientToStore(pa.pno,pa.pname,pa.identity,pa.psexdes,pa.totalcost+"").send();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(x.getBlockNumber()+"\nRecording:");
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put(KeyValue.PNO,pa.getPno());
+                    jsonObject.put(KeyValue.ADDR,addr);
+                    getRecord(jsonObject);
+                }
+            }).start();
     }
     public Patient selectPatient(String pno,String addr) {
         Patient pa=new Patient();
@@ -91,14 +84,6 @@ public class IC_Administration {
             System.out.println(IC_Administration.class.getResource("key_01").getPath());
             Idus idus= load(addr,web3j,credentials,BigInteger.valueOf(22000000000L), BigInteger.valueOf(4300000L));
             System.out.println("selectPatient_isValid"+idus.isValid());
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put(KeyValue.MINENUM,"4");
-                getMine(jsonObject);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            //mine();
             List<Type> result = idus.getPatient(pno).send();
             System.out.println(result);
             pa.setPno(result.get(0).toString());
@@ -112,41 +97,45 @@ public class IC_Administration {
         }
         return pa;
     }
-//    public void mine() throws IOException {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Request<?, EthBlockNumber> request=geth.ethBlockNumber();
-//                    int oldblock=Integer.parseInt(request.send().getBlockNumber().toString());
-//                    System.out.println("MineStart\nTopBlockNumber_OLD="+oldblock);
-//                    //Admin admin=Admin.build(new HttpService());
-//                    geth.minerStart(1).send();
-//                    int newblock=oldblock;
-//                    while(newblock<oldblock+4){
-//                        //Thread.sleep(Long.parseLong("20"));
-//                        newblock=Integer.parseInt(geth.ethBlockNumber().send().getBlockNumber().toString());
-//                    }
-//                    geth.minerStop().send();
-//                    System.out.println("TopBlockNumber_NEW="+newblock+"\nMineStop");
-//                } catch (IOException  e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
-//    }
+    public void mine(int mineNum,int threadNum){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put(KeyValue.MINENUM,mineNum+"");
+            jsonObject.put(KeyValue.THREADNUM,threadNum+"");
+            getMine(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public void mineNow() throws IOException {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Request<?, EthBlockNumber> request=geth.ethBlockNumber();
+                    int oldblock=Integer.parseInt(request.send().getBlockNumber().toString());
+                    System.out.println("MineStart\nTopBlockNumber_OLD="+oldblock);
+                    geth.minerStart(1).send();
+                    int newblock=oldblock;
+                    while(newblock<oldblock+4){
+                        newblock=Integer.parseInt(geth.ethBlockNumber().send().getBlockNumber().toString());
+                    }
+                    geth.minerStop().send();
+                    System.out.println("TopBlockNumber_NEW="+newblock+"\nMineStop");
+                } catch (IOException  e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
     public void getMine (final JSONObject jsO){
         RequestMethod.RequestMine(this,jsO, new ServerLinkInterFace.onMineCallback() {
             @Override
             public void Success(JSONObject role) {//回调函数
-                JSONObject takedata= null;
                 try {
                     if(role==null) {
                         System.exit(0);
                     }
-                    //takedata = (JSONObject) role.get("");
-                    //final byte[]kk=  Base64.decode(takedata.getString("upic"));
-                    //mydata.setUpic(kk);
                    System.out.println(role.getString("minedata"));
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -155,6 +144,32 @@ public class IC_Administration {
             @Override
             public void Fail(String error) {
 
+            }
+            @Override
+            public void UnkownError(String unkownerror) {
+            }
+        });
+    }
+
+    public void getRecord (final JSONObject jsO){
+        RequestMethod.RequestRecord(this,jsO, new ServerLinkInterFace.onRecordCallback() {
+            @Override
+            public void Success(JSONObject role) {//回调函数
+                try {
+                    if(role==null) {
+                        System.exit(0);
+                    }
+                    //JSONObject takedata= null;
+                    //takedata = (JSONObject) role.get("");
+                    //final byte[]kk=  Base64.decode(takedata.getString("upic"));
+                    //mydata.setUpic(kk);
+                    System.out.println(role.getString("recorddata"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void Fail(String error) {
             }
             @Override
             public void UnkownError(String unkownerror) {

@@ -37,7 +37,7 @@ public class ResponseMethod {
             urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");//设置meta参数
             urlConn.setRequestProperty("Charset", "utf-8");//缓存
             urlConn.connect();//连接服务器发送消息
-            System.out.println("发送信息为："+jo2.toString());
+            System.out.println("LunchMessage:"+jo2.toString());
             dos = new DataOutputStream(urlConn.getOutputStream());
             dos.write((jo2.toString()).getBytes());//写数据
             dos.close();

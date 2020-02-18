@@ -13,4 +13,11 @@ public class ServerLinkInterFace {
 
         void UnkownError(String unkownerror);
     }
+    public  interface onRecordCallback {
+        void Success(JSONObject role);
+
+        void Fail(String error);
+
+        void UnkownError(String unkownerror);
+    }
 }
