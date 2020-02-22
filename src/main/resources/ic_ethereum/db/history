@@ -1,0 +1,34 @@
+admin.addPeer( "enode://6737c7d1b295a65614a9f8691934e6aac539555ee870d3f2fd802de66369e2ebe27c68090e07ad08070be3f295d8cb7268bd4f95fe50bdb12a9cea82b7c5a712@49.234.120.88:30301?discport=0")
+admin.peers
+miner.start(1);admin.sleepBlocks(1);miner.stop();
+miner.start(1)
+miner.stop()
+miner.start(1);admin.sleepBlocks(1);miner.stop();
+admin.peers
+admin.addPeer( "enode://6737c7d1b295a65614a9f8691934e6aac539555ee870d3f2fd802de66369e2ebe27c68090e07ad08070be3f295d8cb7268bd4f95fe50bdb12a9cea82b7c5a712@49.234.120.88:30301?discport=0")
+admin.peers
+miner.start(1);admin.sleepBlocks(1);miner.stop();
+admin.nodeInfo
+admin.peers
+miner.start(1);admin.sleepBlocks(1);miner.stop();
+eth.getBlock(24)
+eth.getBlock(25)
+eth.getTransaction("0x34ad24457ec83270a5d4ca1359bf2a65c4b78520")
+admin.peers
+admin.addPeer( "enode://6737c7d1b295a65614a9f8691934e6aac539555ee870d3f2fd802de66369e2ebe27c68090e07ad08070be3f295d8cb7268bd4f95fe50bdb12a9cea82b7c5a712@49.234.120.88:30301?discport=0")
+admin.peers
+miner.start(1);admin.sleepBlocks(1);miner.stop();
+eth.getBlock(24)
+eth.getBlock(35)
+admin.peers
+miner.start(1);admin.sleepBlocks(1);miner.stop();
+eth.getBlock(330)
+eth.getBlock(331)
+eth.getBlock(329)
+eth.getBlock(328)
+miner.start(1);admin.sleepBlocks(1);miner.stop();
+eth.getBlock(331)
+eth.getBlock(332)
+eth.getBlock(330)
+miner.start(1);admin.sleepBlocks(1);miner.stop();
+admin.peers

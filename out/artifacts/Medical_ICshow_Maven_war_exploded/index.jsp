@@ -38,9 +38,19 @@
 </head>
 
 <body >
+    <script>
+        function setHref() {
+            document.getElementById('zzz').href="nodeopen";
+        }
+        function clearHref() {
+            document.getElementById('yyy').href="nodeclose";
+        }
+    </script>
     <div id="container">
         <div id="left">
             <ul>
+                <li class="page_item page-item-5"><a href="nodeopen" target="mainFrame" title="打开节点" >打开节点</a></li>
+                <li class="page_item page-item-5"><a href="nodeclose" target="mainFrame" title="关闭节点" >关闭节点</a></li>
                 <li class="page_item page-item-2 "><a href="doc.jsp" target="mainFrame" title="医生信息管理">医生信息管理</a></li>
                 <li class="page_item page-item-5"><a href="sick.jsp" target="mainFrame" title="就诊管理系统">就诊管理系统</a></li>
             </ul>

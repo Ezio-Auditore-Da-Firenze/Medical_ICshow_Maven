@@ -1,0 +1,2 @@
+geth --datadir ./db/ --rpc --rpcaddr=127.0.0.1 --rpcport 8545 --rpccorsdomain "*" --rpcapi "eth,net,web3,personal,admin,shh,txpool,debug,miner" --maxpeers 30 --networkid 198989 --port 30304 --bootnodes "enode://6737c7d1b295a65614a9f8691934e6aac539555ee870d3f2fd802de66369e2ebe27c68090e07ad08070be3f295d8cb7268bd4f95fe50bdb12a9cea82b7c5a712@49.234.120.88:30301" console
+admin.addPeer( "enode://6737c7d1b295a65614a9f8691934e6aac539555ee870d3f2fd802de66369e2ebe27c68090e07ad08070be3f295d8cb7268bd4f95fe50bdb12a9cea82b7c5a712@49.234.120.88:30301?discport=0")

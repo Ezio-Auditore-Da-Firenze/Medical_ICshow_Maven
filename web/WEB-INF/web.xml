@@ -57,6 +57,24 @@
         <servlet-name>PatientInsertServlet</servlet-name>
         <url-pattern>/PatientInsertServlet</url-pattern>
     </servlet-mapping>
-
-
+    <servlet>
+        <description></description>
+        <display-name>NodeOpenServlet</display-name>
+        <servlet-name>NodeOpenServlet</servlet-name>
+        <servlet-class>servlet.NodeOpenServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NodeOpenServlet</servlet-name>
+        <url-pattern>/nodeopen</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>NodeCloseServlet</display-name>
+        <servlet-name>NodeCloseServlet</servlet-name>
+        <servlet-class>servlet.NodeCloseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NodeCloseServlet</servlet-name>
+        <url-pattern>/nodeclose</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -4,7 +4,6 @@ package ic_ethereum;
 
 import bean.Patient;
 //import net.sf.json.JSONObject;
-import org.java_websocket.util.Base64;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.web3j.abi.datatypes.Type;
@@ -18,6 +17,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 import org.web3j.protocol.geth.Geth;
 import org.web3j.protocol.http.HttpService;
+import tool.BATExecutorUtil;
 import toserver.KeyValue;
 import toserver.RequestMethod;
 import toserver.ServerLinkInterFace;
@@ -49,6 +49,22 @@ public class IC_Administration {
         } catch (CipherException e) {
             e.printStackTrace();
         }
+    }
+    public void IC_openNode() {
+        System.out.println("now try open node");
+        //String info="geth --datadir ./db/ --rpc --rpcaddr=127.0.0.1 --rpcport 8545 --rpccorsdomain \"*\" --rpcapi \"eth,net,web3,personal,admin,shh,txpool,debug,miner\" --maxpeers 30 --networkid 198989 --port 30301 --bootnodes \"enode://6737c7d1b295a65614a9f8691934e6aac539555ee870d3f2fd802de66369e2ebe27c68090e07ad08070be3f295d8cb7268bd4f95fe50bdb12a9cea82b7c5a712@49.234.120.88:30301\" console admin.addPeer( \"enode://6737c7d1b295a65614a9f8691934e6aac539555ee870d3f2fd802de66369e2ebe27c68090e07ad08070be3f295d8cb7268bd4f95fe50bdb12a9cea82b7c5a712@49.234.120.88:30301?discport=0\")\n";
+        //String cmd ="open.bat";
+        String path ="open.bat";
+        //BATExecutorUtil.creatBAT(info, path);
+        BATExecutorUtil.execBAT(path);
+        //"F:\\GoWorkSpace\\ether-test\\open.bat";
+        //IC_Administration.class.getResource("open.bat").getPath();
+        //        System.out.println(cmd);
+        //        Process process = Runtime.getRuntime().exec("cmd /k start "+cmd);
+        //        process.waitFor();
+    }
+    public void IC_closeNode() {
+        BATExecutorUtil.execCommand("cmd.exe /c wmic process where name='geth.exe' call terminate");
     }
     public String IC_deploy() throws Exception {
         // 部署合约
