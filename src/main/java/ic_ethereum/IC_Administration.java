@@ -32,10 +32,12 @@ public class IC_Administration {
     private HttpService hs;
     private Web3j web3j;
     private Geth geth;
+    private boolean NodeStatus;
     Credentials credentials;
     public static  IC_Administration ICA=new IC_Administration();
     public IC_Administration(){
         hs=new HttpService("http://localhost:8545/");
+        NodeStatus=false;
         web3j = Web3j.build(hs); // 创建一个 web3j 的连接
         geth=Geth.build(hs);
         try {
@@ -62,9 +64,11 @@ public class IC_Administration {
         //        System.out.println(cmd);
         //        Process process = Runtime.getRuntime().exec("cmd /k start "+cmd);
         //        process.waitFor();
+        ICA.NodeStatus=true;
     }
     public void IC_closeNode() {
         BATExecutorUtil.execCommand("cmd.exe /c wmic process where name='geth.exe' call terminate");
+        ICA.NodeStatus=false;
     }
     public String IC_deploy() throws Exception {
         // 部署合约
@@ -192,4 +196,11 @@ public class IC_Administration {
             }
         });
     }
+    public boolean isNodeStatus() {
+        return NodeStatus;
+    }
+//
+//    public void setNodeStatus(boolean nodeStatus) {
+//        NodeStatus = nodeStatus;
+//    }
 }

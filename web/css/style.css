@@ -71,4 +71,34 @@ p {
   margin: 0 0 30px 0;
   font-size: 24px;
 }
+#checke{
+  position: relative;
+  -webkit-appearance: none;
+  width:100px;
+  height: 22px;
+  line-height: 22px;
+  background: #ee0006;
+  border-radius: 30px;
+  outline: none;
+  vertical-align:middle;
+}
+#checke:before{
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgb(6, 255, 0);
+  box-shadow: 0px 0px 5px #ddd;
+  transition: all 0.2s linear;
+}
 
+#checke:checked{
+  background: #18ff0a;
+}
+#checke:checked:before{
+  left: 78px;
+  background: rgb(255, 0, 9);
+  transition: all 0.2s linear;
+}
